@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#04060d">
+<title>Last Card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section id="menu" class="screen col on">
+  <h1 class="logo"><span>LAST</span><span>CARD</span></h1>
+  <p class="sub">Descarte todas as cartas antes dos outros. De 2 a 8 jogadores.</p>
+  <button class="btn p" id="btnOnline">Modo Online</button>
+  <button class="btn" id="btnLocal">Modo Local</button>
+  <p class="foot">Online funciona entre computador, celular e tablet.</p>
+</section>
+
+<section id="local" class="screen col">
+  <h2>Modo Local</h2>
+  <p class="sub">Todos no mesmo aparelho. Marque “Bot” para o computador jogar no lugar.</p>
+  <div class="stepper"><button class="btn sm" id="minus" aria-label="Menos jogadores">−</button><span><b id="nPl">4</b> jogadores</span><button class="btn sm" id="plus" aria-label="Mais jogadores">+</button></div>
+  <div id="rows" class="rows"></div>
+  <button class="btn p" id="startLocal">Começar partida</button>
+  <button class="btn ghost" data-go="menu">Voltar</button>
+</section>
+
+<section id="online" class="screen col">
+  <h2>Modo Online</h2>
+  <input type="text" id="oName" maxlength="14" placeholder="Seu nome" autocomplete="nickname">
+  <button class="btn p" id="create">Criar sala</button>
+  <div class="or">ou entre em uma sala</div>
+  <input type="text" id="oCode" maxlength="4" placeholder="CÓDIGO" autocapitalize="characters" autocomplete="off" class="code">
+  <button class="btn" id="join">Entrar na sala</button>
+  <button class="btn ghost" data-go="menu">Voltar</button>
+</section>
+
+<section id="lobby" class="screen col">
+  <h2>Sala</h2>
+  <div class="roomcode" id="roomCode">----</div>
+  <button class="btn sm" id="copy">Copiar link da sala</button>
+  <ul id="plist" class="plist"></ul>
+  <p class="sub" id="lobbyInfo"></p>
+  <div class="row2">
+    <button class="btn" id="addBot">Adicionar bot</button>
+    <button class="btn p" id="startOnline">Começar partida</button>
+  </div>
+  <button class="btn ghost" id="leave">Sair da sala</button>
+</section>
+
+<section id="game" class="screen">
+  <header class="top"><b class="logo sm"><span>LAST</span><span>CARD</span></b><span id="roomTag"></span><button class="btn sm" id="exit">Sair</button></header>
+  <main class="table" id="table">
+    <div id="seats"></div>
+    <div class="center">
+      <div class="ring" id="ring"></div>
+      <div class="dirring" id="dirRing"></div>
+      <div class="piles">
+        <button class="pile" id="drawPile" aria-label="Comprar carta"></button>
+        <div class="pile" id="discard"></div>
+      </div>
+    </div>
+    <div class="msg" id="msg"></div>
+  </main>
+  <footer class="me">
+    <div class="mebar"><span class="metag" id="meTag"></span><button class="btn sm y" id="pass" hidden>Passar a vez</button></div>
+    <div class="hand" id="hand"></div>
+  </footer>
+</section>
+
+<div id="modal" class="overlay" hidden>
+  <div class="box"><p>Escolha a cor</p>
+    <div class="colors">
+      <button class="cb c-r" data-c="r" aria-label="Vermelho"></button><button class="cb c-y" data-c="y" aria-label="Amarelo"></button>
+      <button class="cb c-g" data-c="g" aria-label="Verde"></button><button class="cb c-b" data-c="b" aria-label="Azul"></button>
+    </div>
+  </div>
+</div>
+
+<div id="curtain" class="overlay solid" hidden>
+  <div class="box"><p>Passe o aparelho para</p><h2 id="curtainName"></h2><button class="btn p" id="curtainGo">Estou pronto</button></div>
+</div>
+
+<div id="win" class="overlay" hidden>
+  <div class="box"><h2 id="winText"></h2>
+    <button class="btn p" id="again">Jogar de novo</button>
+    <p class="sub" id="winWait" hidden>Aguardando o anfitrião...</p>
+    <button class="btn ghost" id="toMenu">Menu</button>
+  </div>
+</div>
+
+<div id="toast" role="status"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
